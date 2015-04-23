@@ -82,16 +82,16 @@ function conditional_clear() {
 }
 
 # Calculates the last revision
-function checkupdatess {
-	
-	revision_online="$(timeout -s SIGTERM 20 curl -L "https://sites.google.com/site/blognetenti/linset" 2>/dev/null| grep "^revision" | cut -d "=" -f2)"
-	if [ -z "$revision_online" ]; then
-		echo "?">$DUMP_PATH/Irev
-	else
-		echo "$revision_online">$DUMP_PATH/Irev
-	fi
-	
-}
+##function checkupdatess {
+#	
+#	revision_online="$(timeout -s SIGTERM 20 curl -L "https://sites.google.com/site/blognetenti/linset" 2>/dev/null| grep "^revision" | cut -d "=" -f2)"
+#	if [ -z "$revision_online" ]; then
+#		echo "?">$DUMP_PATH/Irev
+#	else
+#		echo "$revision_online">$DUMP_PATH/Irev
+#	fi
+#	
+##}
 
 # Animation of the spinner
 function spinner {
