@@ -13,15 +13,14 @@
 # This script is free software. You can redistribute it and / or#
 # modify-so under the terms of the General Public License		#
 # GNU as published by the Free Software Foundation,			    #
-# either version 3 of the License, or (at your			            #
-# option) any later version.				                	          #
+# either version 3 of the License, or (at your			        #
+# option) any later version.				                    #
 #                                                               #
-# If you make any changes in this application,		          	  #
-# should always mention the original author thereof.	      		#
+# If you make any changes in this application,		            #
+# should always mention the original author thereof.	        #
 #                                                               #
 # Author: Script created by vk496                               #
-# Translated by: Trig0n 																				#
-#//Some Tabs nd shit fucked up, but that does not really matter.#
+# Translated by: Unknown @line 996 HANDSHAKE					#
 #                                                               #
 # Integrated functions airoscript-ng                            #
 # Objective Function Selection handshaker                       #
@@ -82,16 +81,16 @@ function conditional_clear() {
 }
 
 # Calculates the last revision
-##function checkupdatess {
-#	
-#	revision_online="$(timeout -s SIGTERM 20 curl -L "https://sites.google.com/site/blognetenti/linset" 2>/dev/null| grep "^revision" | cut -d "=" -f2)"
-#	if [ -z "$revision_online" ]; then
-#		echo "?">$DUMP_PATH/Irev
-#	else
-#		echo "$revision_online">$DUMP_PATH/Irev
-#	fi
-#	
-##}
+function checkupdatess {
+	
+	revision_online="$(timeout -s SIGTERM 20 curl -L "https://sites.google.com/site/blognetenti/linset" 2>/dev/null| grep "^revision" | cut -d "=" -f2)"
+	if [ -z "$revision_online" ]; then
+		echo "?">$DUMP_PATH/Irev
+	else
+		echo "$revision_online">$DUMP_PATH/Irev
+	fi
+	
+}
 
 # Animation of the spinner
 function spinner {
@@ -120,10 +119,10 @@ function err_report {
 }
 
 
-# Si se cierra el script inesperadamente, ejecutar la funcion
+# If the script exits unexpectedly, perform the function
 trap exitmode SIGINT
 
-# Funcion que limpia las interfaces y sale
+# Function that cleans and leaves interfaces
 function exitmode {
 	
 	echo -e "\n\n"$blanco"["$rojo" "$blanco"] "$rojo"Running cleaning and closing."$rescolor""
@@ -492,21 +491,21 @@ if [ $LINSET_DEBUG != 1 ]; then
 	spinner "$!"
 	revision_online=$(cat $DUMP_PATH/Irev)
 	echo -e ""$blanco" [${magenta}${revision_online}$blanco"$rescolor"]"
-		if [ "$revision_online" != "?" ]; then
-			
-			if [ "$revision" != "$revision_online" ]; then
-				
-				cp $0 $HOME/linset_rev-$revision.backup
-				curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:11.0) Gecko/20100101 Firefox/11.0" -L http://goo.gl/Y5JX7c -s -o $0
-				echo
-				echo
-				echo -e ""$rojo"Updated successfully! Rebooting the script to apply the changes..."$rescolor""
-				sleep 5
-				chmod +x $0
-				exec $0
-				
-			fi
-		fi
+		#if [ "$revision_online" != "?" ]; then
+		#	
+		#	if [ "$revision" != "$revision_online" ]; then
+		#		
+		#		cp $0 $HOME/linset_rev-$revision.backup
+		#		curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:11.0) Gecko/20100101 Firefox/11.0" -L http://goo.gl/Y5JX7c -s -o $0
+		#		echo
+		#		echo
+		#		echo -e ""$rojo"Updated successfully! Rebooting the script to apply the changes..."$rescolor""
+		#		sleep 5
+		#		chmod +x $0
+		#		exec $0
+		#		
+		#	fi
+		#fi
 	echo ""
 	tput cnorm
 	sleep 2
